@@ -1,3 +1,21 @@
+# CMake
+CMakeFiles
+CMakeCache.txt
+cmake_install.cmake
+install_manifest.txt
+Makefile
+
+# MAC
+.DS_Store
+
+# MS Compiler
+*.sln
+*.ncb
+*.sln
+*.suo
+*.vcproj
+Release
+
 # Prerequisites
 *.d
 
