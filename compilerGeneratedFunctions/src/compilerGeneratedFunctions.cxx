@@ -57,7 +57,7 @@ class Cow {
 	
 };
 
-void main ()
+int main ()
 
 {
 	
