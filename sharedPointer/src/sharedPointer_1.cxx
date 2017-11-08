@@ -53,7 +53,7 @@ int main()
 	*/
 	// An object should be assigned to a smart pointer as soon as it is created.
 	// Row pointer should not be used again
-	shared_ptr<Dog> p = make_shared<Dog>("Tank");	// faster and safer
+	auto p = make_shared<Dog>("Tank");	// faster and safer
 	// make_shared combines the 2 steps	in one step. 
 	// This is important because what if step 1. is successfully (Dog is created)
 	// but step 2. has failed to be created. The Dog "Gunner" will not be managed
