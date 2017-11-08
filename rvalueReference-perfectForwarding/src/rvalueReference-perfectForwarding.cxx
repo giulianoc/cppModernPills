@@ -43,7 +43,7 @@ BoVector createBoVector() { return BoVector(100000); };	// creates a BoVector
 template <typename T>
 void relay(T&& arg)
 {
-	foo(std::forward<T>(arg);
+	foo(std::forward<T>(arg));
 }
 /*
 	In order to have that:
