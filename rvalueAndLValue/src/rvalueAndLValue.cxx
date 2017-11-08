@@ -15,9 +15,9 @@ int main()
 	int *p = &i;
 	
 	// rvalue examples
-	int x = 2;			// 2 is rvalue
-	int y = x + 2;		// (x + 2) is rvalue
-	int z = sum(3, 4);	// sum(3, 4) is rvalue
+	auto x = 2;			// 2 is rvalue
+	auto y = x + 2;		// (x + 2) is rvalue
+	auto z = sum(3, 4);	// sum(3, 4) is rvalue
 	
 	// reference (lvalue reference)
 	int a;
