@@ -56,8 +56,8 @@ void test()
 
 void test2()
 {
-	unique_ptr<Dog> pD = make_unique<Dog>("Gunner");
-	unique_ptr<Dog> pD2 = make_unique<Dog>("Smokey");
+	auto pD = make_unique<Dog>("Gunner");
+	auto pD2 = make_unique<Dog>("Smokey");
 	
 	pD2->bark();
 	
@@ -83,18 +83,18 @@ void f(unique_ptr<Dog> p)
 
 unique_ptr<Dog> getDog()
 {
-	unique_ptr<Dog> p = make_unique<Dog>("Smokey");
+	auto p = make_unique<Dog>("Smokey");
 	
 	return p;	// return p by value --> this automatically use the move semantics
 }
 
 void test3()
 {
-	unique_ptr<Dog> pD = make_unique<Dog>("Gunner");
+	auto pD = make_unique<Dog>("Gunner");
 	
 	f(move(pD));	
 	
-	unique_ptr<Dog> pD2 = getDog();
+	auto pD2 = getDog();
 	// Remark: Smokey is destroyed here (same as above remark)
 }
 
