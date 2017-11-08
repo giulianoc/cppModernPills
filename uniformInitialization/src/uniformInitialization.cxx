@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	class Dog {
 		public:
 
-			int age;			// 3rd choice
+			auto age = 0;			// 3rd choice
 
 			Dog(int a)			// 2nd choice
 			{
@@ -49,7 +49,7 @@ int initializerList()
 	int arr[4] = {3, 2, 4, 5};
 
 	cout << endl << "array:" << endl;
-	for (int index = 0; index < 4; index++)
+	for (auto index = 0; index < 4; index++)
 		cout << arr[index] << endl;
 
 
@@ -57,7 +57,7 @@ int initializerList()
 	vector<int> v1 = {3, 4, 1, 9};	// calling initializer_list constructor
 
 	cout << endl << "vector:" << endl;
-	for (int value: v1)
+	for (auto value: v1)
 		cout << value << endl;
 
 
@@ -77,12 +77,12 @@ int initializerList()
 
 	BoVector v2 = {0, 2, 3, 4};
 	cout << endl << "v2: " << endl;
-	for (int value: v2.getVector())
+	for (auto value: v2.getVector())
 		cout << value << endl;
 
 	BoVector v3{0, 2, 3, 4};	// initializer_list constructor is used
 	cout << endl << "v3: " << endl;
-	for (int value: v3.getVector())
+	for (auto value: v3.getVector())
 		cout << value << endl;
 
 
