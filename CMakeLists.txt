@@ -28,7 +28,7 @@ project(
 	C++ModernPills
 )
 
-SET(CMAKE_CXX_FLAGS "-std=c++0x")
+SET(CMAKE_CXX_FLAGS "-std=c++14")
 
 add_subdirectory(mostFrequent/src)
 add_subdirectory(userDefinedLiterals/src)

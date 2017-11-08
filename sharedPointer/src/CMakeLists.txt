@@ -21,8 +21,12 @@
 # with the authors.
 
 
-SET (SOURCES
-	sharedPointer.cxx
+SET (SOURCES_1
+	sharedPointer_1.cxx
+)
+
+SET (SOURCES_2
+	sharedPointer_2.cxx
 )
 
 #SET (HEADERS
@@ -32,6 +36,7 @@ SET (SOURCES
 
 #add_compile_options(-D_REENTRANT)
 
-add_executable(sharedPointer ${SOURCES} ${HEADERS})
+add_executable(sharedPointer_1 ${SOURCES_1} ${HEADERS})
+add_executable(sharedPointer_2 ${SOURCES_2} ${HEADERS})
 
 #target_link_libraries (checkErrors ErrMsg)
