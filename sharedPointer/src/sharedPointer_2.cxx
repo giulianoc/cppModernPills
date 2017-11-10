@@ -15,8 +15,8 @@ class Dog {
 
 void foo()
 {
-    shared_ptr<Dog> p1 = make_shared<Dog>("Gunner");    // using default deleter: operator delete
-    shared_ptr<Dog> p2 = make_shared<Dog>("Tank");
+    auto p1 = make_shared<Dog>("Gunner");    // using default deleter: operator delete
+    auto p2 = make_shared<Dog>("Tank");
 
     // Gunner is deleted if
     // p1 = p2;    or
@@ -24,13 +24,13 @@ void foo()
     // p1.reset();
 
     // Custom deleter (in this case, only in this case, we can't use make_shared)
-    shared_ptr<Dog> p3 = shared_ptr<Dog>(new Dog("Tank2"),
+    auto p3 = shared_ptr<Dog>(new Dog("Tank2"),
                                          [](Dog* p) { cout << "Custom deleting. "; delete p; }
                                          );
 
     // in one scenario the custom deleter is mandatory: when an array is allocated.
     // In case we do not set a custom deleter, we would have a memory leaks because only the first Dog would be deleted
-    shared_ptr<Dog> p4(new Dog[3], [](Dog* p) { delete[] p;});
+    auto p4(new Dog[3], [](Dog* p) { delete[] p;});
 
     // share_ptr has a method get returning the raw pointer but, absolutely we do not have to use it because
     //  in case it is done delete d; when p1 will go out of scope ...
