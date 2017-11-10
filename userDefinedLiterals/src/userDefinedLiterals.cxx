@@ -6,7 +6,7 @@ using namespace std;
 
 int operator "" _bin(const char *str, size_t l) {
 	int ret = 0;
-	for (int i = 0; i < l; i++)
+	for (auto i = 0; i < l; i++)
 	{
 		ret = ret << 1;
 		if (str[i] == '1')
