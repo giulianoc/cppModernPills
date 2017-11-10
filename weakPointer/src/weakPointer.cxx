@@ -33,8 +33,8 @@ class Dog {
 
 int main()
 {
-    shared_ptr<Dog> pD = make_shared<Dog>("Gunner");
-    shared_ptr<Dog> pD2 = make_shared<Dog>("Smokey");
+    auto pD = make_shared<Dog>("Gunner");
+    auto pD2 = make_shared<Dog>("Smokey");
 
     pD->makeFriend(pD2);
     pD2->makeFriend(pD);
