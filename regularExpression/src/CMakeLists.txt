@@ -20,31 +20,18 @@
 # License is allowed only after express negotiation of conditions
 # with the authors.
 
-cmake_minimum_required(
-	VERSION 2.8.12
+
+SET (SOURCES
+	regularExpression.cxx
 )
 
-project(
-	C++ModernPills
-)
+#SET (HEADERS
+#)
 
-SET(CMAKE_CXX_FLAGS "-std=c++14")
+#include_directories ("${PROJECT_SOURCE_DIR}/ErrMsg/src")
 
-add_subdirectory(mostFrequent/src)
-add_subdirectory(userDefinedLiterals/src)
-add_subdirectory(uniformInitialization/src)
-add_subdirectory(autoType/src)
-add_subdirectory(nullptr/src)
-add_subdirectory(enumClass/src)
-add_subdirectory(delegatingConstructor/src)
-add_subdirectory(methodNewKeywords/src)
-add_subdirectory(lambdaFunction/src)
-add_subdirectory(rvalueAndLValue/src)
-add_subdirectory(rvalueReference-movingSemantics/src)
-add_subdirectory(rvalueReference-perfectForwarding/src)
-add_subdirectory(compilerGeneratedFunctions/src)
-add_subdirectory(sharedPointer/src)
-add_subdirectory(weakPointer/src)
-add_subdirectory(uniquePointer/src)
-add_subdirectory(regularExpression/src)
+#add_compile_options(-D_REENTRANT)
 
+add_executable(regularExpression ${SOURCES} ${HEADERS})
+
+#target_link_libraries (checkErrors ErrMsg)
