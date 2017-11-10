@@ -47,8 +47,8 @@ int main()
 {
 	// Kind of definition
 	{
-		int a = 5;		// a is lvalue
-		int& b = a;		// b is lvalue reference
+		auto a = 5;		// a is lvalue
+		auto& b = a;		// b is lvalue reference
 		// int&& c		// c is rvalue reference
 		
 		printInt(a);	// call printInt (int& i) because a is lvalue
