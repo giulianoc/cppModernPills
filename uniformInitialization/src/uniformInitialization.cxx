@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	class Dog {
 		public:
 
-			auto age = 0;			// 3rd choice
+			int age = 0;			// 3rd choice
 
 			Dog(int a)			// 2nd choice
 			{

@@ -21,8 +21,14 @@
 # with the authors.
 
 
-SET (SOURCES
-	regularExpression.cxx
+SET (SOURCES_1
+	regularExpression_1.cxx
+)
+SET (SOURCES_2
+	regularExpression_2.cxx
+)
+SET (SOURCES_3
+	regularExpression_3.cxx
 )
 
 #SET (HEADERS
@@ -32,6 +38,8 @@ SET (SOURCES
 
 #add_compile_options(-D_REENTRANT)
 
-add_executable(regularExpression ${SOURCES} ${HEADERS})
+add_executable(regularExpression_1 ${SOURCES_1} ${HEADERS})
+add_executable(regularExpression_2 ${SOURCES_2} ${HEADERS})
+add_executable(regularExpression_3 ${SOURCES_3} ${HEADERS})
 
 #target_link_libraries (checkErrors ErrMsg)

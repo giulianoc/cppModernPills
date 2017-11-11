@@ -30,7 +30,7 @@ void foo()
 
     // in one scenario the custom deleter is mandatory: when an array is allocated.
     // In case we do not set a custom deleter, we would have a memory leaks because only the first Dog would be deleted
-    auto p4(new Dog[3], [](Dog* p) { delete[] p;});
+    shared_ptr<Dog> p4(new Dog[3], [](Dog* p) { delete[] p;});
 
     // share_ptr has a method get returning the raw pointer but, absolutely we do not have to use it because
     //  in case it is done delete d; when p1 will go out of scope ...
