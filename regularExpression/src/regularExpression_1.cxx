@@ -14,7 +14,7 @@ int main()
 	{
 		cin >> str;
 
-		// regex e("abc");
+		regex e("abc");
 		// regex e("abc", regex_constants::icase);
 
 		// ^        only abc at the beginning of the string
@@ -84,11 +84,13 @@ int main()
         // Using the grep regular expression, + does not mean one or more preceding character but just the '+' character
 		// regex e("abc.+", regex_constants::grep);
 
+
+
 		// check if the entire str string matches
-		// bool match = regex_match(str, e);
+		bool match = regex_match(str, e);
 
         // check if a substring of str matches
-        bool match = regex_search(str, e);
+        // bool match = regex_search(str, e);
 
         cout << (match ? "Matched" : "Not matched") << endl << endl;
 	}

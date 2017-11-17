@@ -7,7 +7,7 @@ using namespace std;
 
 int main ()
 {
-    std::pair<int,string> p = make_pair(23, "hello");
+    pair<int,string> p = make_pair(23, "hello");
     cout << p.first << " " << p.second << endl;
 
     tuple<int, string, char> t(32, "Penny wise", 'a');

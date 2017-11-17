@@ -1,5 +1,6 @@
 #include <chrono>
 #include <iostream>
+#include <ctime>
 
 using namespace std;
 
@@ -18,9 +19,10 @@ int main()
     // Duration:
     //  std::chrono::duration<>: represents time duration
     //      2 hours: a number (2) and a unit (hours)
-    //  duration<int,ratio<1,1>>    // number of seconds (because of ratio<1,1>) stored in an int
+    //  duration<int,ratio<1,1>>    	// number of seconds (because of ratio<1,1>) stored in an int
     //  duration<double,ratio<60,1>>    // number of minutes stored in a double
-    //  chrono provides several predefined duration (typedef): nanoseconds, microseconds, milliseconds, seconds, minutes, hours
+    //	duration<int,ratio<60*60*24>>	// number of days stored in an int
+    //  chrono provides several predefined duration (typedef): nanoseconds (9 zeros), microseconds (6 zeros), milliseconds, seconds, minutes, hours
     //  each clock has its predefined duration:
     //      system_clock::duration  -- duration<T, system_clock::period> where T is any user-defined type (int, long)
 
@@ -39,6 +41,7 @@ int main()
 
     chrono::microseconds mi(2700);
     mi.count();     // 2700
+    cout << "mi.count: " << mi.count() << endl;
     chrono::nanoseconds na = mi;    // na is 2700000
     na.count();     // 2700000
     chrono::milliseconds mill = chrono::duration_cast<chrono::milliseconds>(mi);    // 2 milliseconds (it's truncated)
@@ -46,7 +49,9 @@ int main()
     mi = mill + mi;     // 2000 + 2700 = 4700
 
     chrono::system_clock::time_point tp = chrono::system_clock::now();
-    cout << tp.time_since_epoch().count() << endl;  // return number of clock cycles from now since time of epoch and, for example if the clock period is 1 nanoseconds (9 zeros) ...
+    // next statement returns number of clock cycles from now since time of epoch and
+    // for example if the clock period is 1 nanoseconds (9 zeros) ...
+    cout << tp.time_since_epoch().count() << endl;
     tp = tp + chrono::seconds(2);
     cout << tp.time_since_epoch().count() << endl;
 
@@ -57,6 +62,15 @@ int main()
     if (d == chrono::steady_clock::duration::zero())
         cout << "no time elapsed" << endl;
     cout << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
+
+	chrono::duration<int, ratio<60*60*24>> one_day(1);
+	chrono::system_clock::time_point today = chrono::system_clock::now();
+	chrono::system_clock::time_point tomorrow = today + one_day;
+	time_t tt;
+	tt = chrono::system_clock::to_time_t(today);
+	cout << "today: " << ctime(&tt) << endl;
+	tt = chrono::system_clock::to_time_t(tomorrow);
+	cout << "tomorrow: " << ctime(&tt) << endl;
 
     return 0;
 }
