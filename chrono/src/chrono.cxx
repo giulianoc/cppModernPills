@@ -24,6 +24,13 @@ int main()
     //  each clock has its predefined duration:
     //      system_clock::duration  -- duration<T, system_clock::period> where T is any user-defined type (int, long)
 
+    // Time point
+    //  std::chrono::time_point<>:  represent a point of time starting from 00:00 January 1970 (UTC) - epoch of clock
+    //  time_point<system_clock, milliseconds>: the elapsed time since epoch in milliseconds, according to system_clock
+    //  Each clock has its own time_point definition:
+    //      system_clock::time_point    -- time_point<system_clock, system_clock::duration>
+    //      steady_clock::time_point    -- time_point<steady_clock, system_clock::duration>
+
     // clock frequency or period is represented by std::ratio
     ratio<1,10> r;  // 1/10
     cout << r.num << "/" << r.den << endl;  // print numerator and denominator
@@ -38,6 +45,18 @@ int main()
 
     mi = mill + mi;     // 2000 + 2700 = 4700
 
+    chrono::system_clock::time_point tp = chrono::system_clock::now();
+    cout << tp.time_since_epoch().count() << endl;  // return number of clock cycles from now since time of epoch and, for example if the clock period is 1 nanoseconds (9 zeros) ...
+    tp = tp + chrono::seconds(2);
+    cout << tp.time_since_epoch().count() << endl;
+
+    chrono::steady_clock::time_point start = chrono::steady_clock::now();
+    cout << "I'm bored" << endl;
+    chrono::steady_clock::time_point end = chrono::steady_clock::now();
+    chrono::steady_clock::duration d = end - start;
+    if (d == chrono::steady_clock::duration::zero())
+        cout << "no time elapsed" << endl;
+    cout << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
 
     return 0;
 }

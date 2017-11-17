@@ -21,11 +21,8 @@
 # with the authors.
 
 
-SET (SOURCES_1
-	chrono_1.cxx
-)
-SET (SOURCES_2
-	chrono_2.cxx
+SET (SOURCES
+	chrono.cxx
 )
 
 #SET (HEADERS
@@ -35,7 +32,6 @@ SET (SOURCES_2
 
 #add_compile_options(-D_REENTRANT)
 
-add_executable(chrono_1 ${SOURCES_1} ${HEADERS})
-add_executable(chrono_2 ${SOURCES_2} ${HEADERS})
+add_executable(chrono ${SOURCES} ${HEADERS})
 
 #target_link_libraries (checkErrors ErrMsg)
