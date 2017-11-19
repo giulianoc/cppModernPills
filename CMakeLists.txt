@@ -30,6 +30,7 @@ project(
 
 SET(CMAKE_CXX_FLAGS "-std=c++14")
 
+add_subdirectory(000_foreach/src)
 add_subdirectory(001_uniformInitialization/src)
 add_subdirectory(002_autoType/src)
 add_subdirectory(003_nullptr/src)
