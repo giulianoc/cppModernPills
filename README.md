@@ -2,6 +2,7 @@
 C++ Modern pills is a tutorial composed by samples of new C++ modern features.
 
 000 - 099: C++ pills:
+- 000_foreach
 - 001_uniformInitialization
 - 002_autoType
 - 003_nullptr
