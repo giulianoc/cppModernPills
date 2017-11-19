@@ -61,7 +61,7 @@ int main()
 
 		// email address ending with .com
 		// [[:w:]] ---> word character: digit, number or undescore
-		regex e("[[:w:]]+@[[:w:]]+\.com");
+		// regex e("[[:w:]]+@[[:w:]]+\.com");
 
 		// [[:alnum:]]  alpha-numerical character   equivalemt to isalnum
 		// [[:alpha:]]  alphabetic character   equivalemt to isalpha
