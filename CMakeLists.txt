@@ -67,5 +67,6 @@ add_subdirectory(111_stl-container-associative-unordered_multimap/src)
 add_subdirectory(112_stl-container-associative-array/src)
 add_subdirectory(113_stl-container-adaptor/src)
 add_subdirectory(114_stl-iteratorsAndAlgorithms/src)
+add_subdirectory(115_stl-functors/src)
 
 add_subdirectory(200_mostFrequent/src)
