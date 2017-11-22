@@ -76,9 +76,61 @@ int main()
     //  4. Move iterator
 
 
-    //  Algorithms
+    //  Non-modifying Algorithms:
+    //      counting
+    //          count, count_if, min_element, max_element, minmax_element
+    //      linear search (to be used only if data is not sorted, otherwise binary search has to be used):
+    //          find, find_if, find_if_not, search_n, search, find_end, find_first_of, adjacent_find
+    //      comparing:
+    //          equal, is_permutation, mismatch, lexicographical_compare
+    //      attributes:
+    //          is_sorted, is_sorted_until, is_partitioned, is_heap, is_heap_until, all_of, any_of, none_of
+    //
 
     vector<int>::iterator itr = min_element(vec.begin(), vec.end());
+    // vector<int>::iterator itr = find_if(vec.begin(), vec.end(), myFunction);
+
+    // Modifying algorithms:
+    //      copy:
+    //          copy, copy_if, copy_n, copy_backward
+    //      move:
+    //          move, move_backward
+    //      transform:
+    //          transform
+    //      swap:
+    //          swap_ranges
+    //      fill
+    //          fill, fill_n, generate, generate_n
+    //      replace
+    //          replace, replace_if, replace_copy
+    //      remove
+    //          remove, remove_if, remove_copy, unique, unique_copy
+    //      reverse
+    //          reverse, reverse_copy
+    //      rotate
+    //          rotate, rotate_copy
+    //      permute
+    //          next_permutation, prev_permutation
+    //      shuffle
+    //          random_shuffle, shuffle
+    //      sort
+    //          sort, partial_sort, nth_element, partition, stable_partition, make_heap, pop_heap, push_heap, sort_heap
+
+    // Algorithms working only on sorted data
+    //      binary search
+    //          binary_search, includes, lower_bound, upper_bound, equal_range
+    //      merge
+    //          merge, inplace_merge
+    //      set operations
+    //          set_union, set_intersection, set_difference, set_symmetric_difference
+    //      Numeric algorithms
+    //              accumulate
+    //      inner product
+    //          inner_product
+    //      partial sum
+    //          partial_sum
+    //      adjacent difference
+    //          adjacence_difference
 
     // algorithm always process ranges in a half open way,
     // so next sort element from the begin to itr, element pointed by itr excluded
@@ -88,7 +140,6 @@ int main()
 
     // copy(itr, vec.end(), vec2.begin());  vec2 needs to have space for the elements to be copied
 
-    // vector<int>::iterator itr = find_if(vec.begin(), vec.end(), myFunction);
 
 
 
