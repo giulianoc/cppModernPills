@@ -5,10 +5,17 @@
 
 using namespace std;
 
+ostream& operator<< (ostream& os, pair<int,string>& p)
+{
+    cout << p.first << " " << p.second << endl;
+
+    return os;
+}
+
 int main ()
 {
     pair<int,string> p = make_pair(23, "hello");
-    cout << p.first << " " << p.second << endl;
+    cout << p;
 
     tuple<int, string, char> t(32, "Penny wise", 'a');
     cout << get<0>(t) << endl;
