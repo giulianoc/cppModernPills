@@ -31,7 +31,8 @@ int main()
     list<int>::iterator itr = find(mylist1.begin(), mylist1.end(), 2);  // itr -> 2
     mylist1.insert(itr, 8);                                             // mylist1: { 4, 5, 8, 2, 9, 6 }
     itr++;                                                              // itr -> 9
-    mylist1.erase(itr);                                                 // mylist1: { 4, 5, 8, 2, 6 }
+    mylist1.erase(itr);                                                 // remove by position,, mylist1: { 4, 5, 8, 2, 6 }
+    mylist1.remove(5);                                                  // remove by value, mylist1: { 4, 8, 2, 6 }
     itr = find(mylist1.begin(), mylist1.end(), 8);                      // itr -> 8
 
     {
@@ -39,7 +40,7 @@ int main()
         list<int>::iterator itr1 = find(mylist2.begin(), mylist2.end(), 30);
         list<int>::iterator itr2 = find(mylist2.begin(), mylist2.end(), 60);
 
-        mylist1.splice(itr, mylist2, itr1, itr2);    // mylist1 = { 4, 5, 30, 40, 50, 8, 2, 6}, mylist2 = {10, 20, 60, 70 }
+        mylist1.splice(itr, mylist2, itr1, itr2);    // mylist1 = { 4, 30, 40, 50, 8, 2, 6}, mylist2 = {10, 20, 60, 70 }
 
         for (int i: mylist1)
             cout << i << " ";

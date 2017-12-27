@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
 
@@ -38,11 +39,40 @@ int main()
 
     for (auto it: vec)
         cout << it << " ";
+    cout << endl;
 
     // because memory of array is contiguous, I could use p as a regular array
     int *p = &vec[0];
     p[2] = 6;
 
+    {
+        cout << "Removing first option ..." << endl;
+        vector<int> vec2 = { 1, 2, 3, 4, 5, 6, 7, 8};
+        for (auto itr = vec2.begin(); itr != vec2.end(); )
+        {
+            if (*itr == 4)
+		itr = vec2.erase(itr);	// returns iterator to the next element
+            else
+		itr++;
+        }
+        
+        for (auto i: vec2)
+            cout << i << ", ";
+        cout << endl;
+
+        cout << "Removing second option ..." << endl;
+        vector<int> vec3 = { 1, 2, 3, 4, 5, 6, 7, 8};
+        vec3.erase(
+            remove_if(vec3.begin(), vec3.end(), [](int x){ return x == 4; }),
+                vec3.end());
+        // std::remove_if: Removing is done by shifting (by means of move assignment) the elements 
+        //  in the range in such a way that the elements that are not to be removed appear in the beginning of the range
+            
+        for (auto i: vec3)
+            cout << i << ", ";
+        cout << endl;
+    }
+    
     // Common APIs for all the containers
     vec.empty();
     vec.size();

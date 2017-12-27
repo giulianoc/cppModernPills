@@ -89,10 +89,10 @@ int main()
 		// check if the entire str string matches
 		bool match = regex_match(str, e);
 
-        // check if a substring of str matches
-        // bool match = regex_search(str, e);
+            // check if a substring of str matches
+            // bool match = regex_search(str, e);
 
-        cout << (match ? "Matched" : "Not matched") << endl << endl;
+            cout << (match ? "Matched" : "Not matched") << endl << endl;
 	}
 
 }

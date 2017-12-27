@@ -45,7 +45,7 @@ void foo (BoVector v) { };
 BoVector createBoVector() { return BoVector(100000); };	// creates a BoVector
 
 class Widget {
-    using DataType = vector<double>;    // using is like typedef but better
+    using DataType = vector<double>;    // 'using' is like typedef but better
 
     public:
         DataType& data() &
@@ -66,34 +66,34 @@ Widget makeWidget() { return Widget(); };
 
 int main()
 {
-	// Kind of definition
-	{
-		auto a = 5;		// a is lvalue
-		auto& b = a;		// b is lvalue reference
-		// int&& c		// c is rvalue reference
+    // Kind of definition
+    {
+            auto a = 5;		// a is lvalue
+            auto& b = a;		// b is lvalue reference
+            // int&& c		// c is rvalue reference
 
-		printInt(a);	// call printInt (int& i) because a is lvalue
-		printInt(6);	// call printInt (int&& i) because 6 is rvalue
-	}
+            printInt(a);	// call printInt (int& i) because a is lvalue
+            printInt(6);	// call printInt (int&& i) because 6 is rvalue
+    }
 
-	// here it is highlighted the importance of the rvalue reference
-	{
-		BoVector reusable = createBoVector();
-		foo(reusable);	// reusable is lvalue, it would invoke the costly Copy Constructor but it's ok we want to reuse reusable
+    // here it is highlighted the importance of the rvalue reference
+    {
+            BoVector reusable = createBoVector();
+            foo(reusable);	// reusable is lvalue, it would invoke the costly Copy Constructor but it's ok we want to reuse reusable
 
-		foo(createBoVector());	// createBoVector() is rvalue, it would copy the inexpensive Move Constructor
+            foo(createBoVector());	// createBoVector() is rvalue, it would copy the inexpensive Move Constructor
 
-		// in case reusable it is not used anymore from here on, we can use
-		foo(std::move(reusable));	// it will call the Move Constructor
-	}
+            // in case reusable it is not used anymore from here on, we can use
+            foo(std::move(reusable));	// it will call the Move Constructor
+    }
 
-	{
+    {
         Widget w;
 
         auto vals1 = w.data();      // call lvalue reference overloaded of data(), copy constructor is called for the vector, copy w.values into vals1
 
         auto vals2 = makeWidget();  // call rvalue reference overloaded of data(), move constructor is called for the vector, NO copy from w.values into vals1 is done
-	}
+    }
 
-	return 0;
+    return 0;
 }

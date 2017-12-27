@@ -27,14 +27,7 @@ int main()
     cout << day['S'] << endl;               // no range check
     cout << day.at('S') << endl;            // Has range check
 
-    vector<int> vec = {1, 2, 3};
-    vec[5] = 5;     // it should not compile but on linux/g++ it compiles
-
-    for (auto i: vec)
-        cout << i << " ";
-    cout << endl;
-
-    // next statement is the same day.insert(...)
+    // next statement is the same as day.insert(...)
     day['W'] = "Wednesday";                 // Inserting { 'W', "Wednesday" }
     day.insert(make_pair('F', "Friday"));   // Inserting { 'F', "Friday" }
 

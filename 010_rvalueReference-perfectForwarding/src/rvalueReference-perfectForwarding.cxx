@@ -69,8 +69,8 @@ void relay(T&& arg)
 
 int main()
 {
-		BoVector reusable = createBoVector();
-		relay(reusable);			// lvalue -> copy constructor has to be invoked
-		// ...
-		relay(createBoVector());	// rvalue -> move constructor has to be invoked
+    BoVector reusable = createBoVector();
+    relay(reusable);			// lvalue -> copy constructor has to be invoked
+    // ...
+    relay(createBoVector());	// rvalue -> move constructor has to be invoked
 }

@@ -10,7 +10,7 @@ using namespace std;
 
 int main()
 {
-    // 1. Random access iterator: vector, deque, array (increment, decrement, add/substruct, compare)
+    // 1. Random access iterator: vector, deque, array (increment, decrement, add/subtract, compare)
 
     vector<int> vec = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 

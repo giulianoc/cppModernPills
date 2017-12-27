@@ -30,6 +30,10 @@ project(
 
 SET(CMAKE_CXX_FLAGS "-std=c++14")
 
+set(CMAKE_BUILD_TYPE Debug)
+#set(CMAKE_BUILD_TYPE RelWithDebInfo)
+#set(CMAKE_BUILD_TYPE Release)
+
 add_subdirectory(000_foreach/src)
 add_subdirectory(001_uniformInitialization/src)
 add_subdirectory(002_autoType/src)

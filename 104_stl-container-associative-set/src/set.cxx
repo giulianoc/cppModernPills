@@ -41,11 +41,31 @@ int main()
 
     myset.insert(itr, 9);       // myset: {1, 3, 7, 9}, The set decide where to place 9. itr is passed as hint to find the location where 9 has to be placed.
                                 //  if the hint is good, the time would be reduced from O(log(n)) to O(1)
-                                // it --> 3
+                                // itr --> 3
     myset.erase(itr);           // myset: {1, 7, 9}
 
     myset.erase(7);             // myset: {1, 9}
     // None of the sequence containers provide this kind of erase (erase(7)) because it would take too long to erase
 
+    myset.insert(itr, 10);
+    myset.insert(itr, 11);
+    myset.insert(itr, 12);      // myset: {1, 9, 10, 11, 12}
+    
+    // erase(itr) invalidate the iterator, so in case of a loop this is the right algorithm
+    {
+        cout << "removing..." << endl;
+        for (auto itr2 = myset.begin(); itr2 != myset.end(); )
+        {
+            if (*itr2 == 10)
+                myset.erase(itr2++);
+            else
+                itr2++;
+        }
+        
+        for (int i: myset)
+            cout << i << ", ";
+        cout << endl;
+    }
+    
     return 0;
 }

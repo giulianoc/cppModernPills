@@ -29,7 +29,7 @@ int main()
 		
 		cout << endl;
 		int y = 4;
-		filter([&](int x){return x > y;}, v);
+		filter([&](int x){return x > y;}, v);   // & to have access to local variables by the lambda function
 
 		cout << endl;
 	}
