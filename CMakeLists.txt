@@ -75,5 +75,6 @@ add_subdirectory(114_stl-iteratorsAndAlgorithms/src)
 add_subdirectory(115_stl-functors/src)
 add_subdirectory(116_stl-string/src)
 add_subdirectory(117_stl-stream/src)
+add_subdirectory(118_stl-thread/src)
 
 add_subdirectory(200_mostFrequent/src)
