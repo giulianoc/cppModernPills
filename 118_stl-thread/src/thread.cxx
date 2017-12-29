@@ -10,9 +10,9 @@
 
 using namespace std;
 
-void function_1()
+void function_1(string msg)
 {
-    cout << "Beauty is only skin-deep" << endl;
+    cout << msg << endl;
 }
 
 class Fctor1 {
@@ -41,14 +41,14 @@ public:
         lock_guard<mutex> locker(m_mutex);
         cout << "From " << msg << ": " << value << endl;
         
-        // The previous lock_guard lock the mutex at the beginning and unlock it
-        // when locker is out of the scope. In case we need to unlock before the out
-        // of scope, we have to use unique_lock (lock/unlock in a more flexible way):
+        // The previous lock_guard locks the mutex at the beginning and unlocks it
+        // when locker is out of the scope. In case we need more flexibility and unlock before the out
+        // of scope, we have to use unique_lock:
         // 1. unique_lock<mutex> locker(m_mutex);  // lock the mutex or
         // 2. unique_lock<mutex> locker(m_mutex, defer_lock);  // it does not lock the mutex
         // In any time we can lock or unlock the mutex
-        // Anyway, if we do not need this flexibility, it would be better from the performance
-        // point of view to use lock_guard
+        // Anyway, if we do not need this flexibility, it would be better from performance
+        // point of view using lock_guard
     }
 };
 
@@ -119,7 +119,8 @@ int main(int argc, char** argv)
     // To make sure t1 is join or detach, we can use RAII
 
     {
-        thread t1 (function_1);
+        string s = "Beauty is only skin-deep";
+        thread t1 (function_1, s);
         t1.join();
     }
 
@@ -210,7 +211,9 @@ int main(int argc, char** argv)
         thread t4([](string s) { cout << s << endl; }, s); 
         t4.join();
         
-        // other funtion creating threads: bind(), async(), call_once()
+        // other funtions creating threads: async(), call_once()
+        // once_flag _flag;
+        // call_once(_flag, [&](){ _f.open("log.txt"); }); // file will be opened only once by one thread
     }
 
     return 0;

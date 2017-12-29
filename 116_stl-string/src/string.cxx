@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+#include <iterator>
+#include <vector>
 #include <algorithm>
 
 using namespace std;
@@ -32,8 +35,8 @@ int main()
     s1[2];              // 'o' (reference to the char)
     s1[2] = 'x';        // Goxdbye
     s1.at(2) = 'y';     // Goydbye
-    s1.at(20);          // throw an exception of out of range
-    s1[20];             // no exception, undefined behavior
+    // s1.at(20);          // throw an exception of out of range
+    // s1[20];             // no exception, undefined behavior
 
     // next API are just to be consistent with other containers
     // and like vector, string doesn't have push_front() and pop_front() because are not efficient
@@ -94,8 +97,11 @@ int main()
     string ss = s1 + s2;
 
     cout << s1 << endl; // output
+    cout << "write an input string (\\n to terminate): ";
     cin >> s1;         // input
+    cout << "another one (\\n to terminate): ";
     getline(cin, s1);   // input as the previous one, delimiter: \n
+    cout << "another one (; to terminate): ";
     getline(cin, s1, ';');  // input until it see ';', delimiter: ';'
 
     // convert a number into a string
@@ -113,7 +119,7 @@ int main()
     i = stoi(s1, &pos); // i = 190, pos will be the index of char where stoi has stopped to parsing the number, pos: 3
 
     s1 = "a monkeys";
-    i = stoi(s1, &pos); // exception of invalid_argument
+    // i = stoi(s1, &pos); // exception of invalid_argument
     i = stoi(s1, &pos, 16);     // 16: exedecimal, i = 10
 
     // stol, stod, stof, ...
@@ -142,6 +148,42 @@ int main()
     s1 = "abcdefg";
     rotate(s1.begin(), s1.begin() + 3, s1.end());   // "defgabc" s1.begin() + 3 becomes the first char
 
+    {
+        // given a string, convert it to lowercase and count the length of the non-empty words of the string
+        s1 = "Hello       World";
+
+        cout << "Lowercase: " << s1 << endl;
+        transform(s1.begin(), s1.end(), s1.begin(), [](unsigned char c){return tolower(c); } );
+        cout << "result: " << s1 << endl;
+
+        cout << "Splitting in words (option 1): " << s1;
+        istringstream iss(s1);
+        vector<string> words;
+        copy(
+            istream_iterator<std::string>(iss),
+            istream_iterator<std::string>(),
+            back_inserter(words)
+        );
+        cout << "result:" << endl;
+        for (string s: words)
+            cout << s.length() << endl;
+
+        cout << "Splitting in words (option 2): " << s1;
+        words.clear();
+        stringstream ss(s1);
+        string token;
+        char delim = ' ';
+        while (getline(ss, token, delim)) 
+        {
+            if (!token.empty())
+                words.push_back(token);
+        }
+        
+        cout << "result:" << endl;
+        for (string s: words)
+            cout << s.length() << endl;
+    }
+    
     u16string s8;   // string of char16_t (16 bits chars)
     u32string s9;   // string of char32_t (32 bits chars)
     wstring s10;   // string of wchar_t (wide char)
