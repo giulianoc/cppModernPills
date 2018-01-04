@@ -19,6 +19,31 @@ int main()
     vec.push_back(1);
     vec.push_back(8);       // vec: {4,1, 8};   vec.size() == 3
 
+    // push_back vs emplace_back:
+    //  Difference 1.
+    //  1.1 push_back accepts only objects of the 'type' if the constructor accept more than one argument
+    //      When the vector type is a user-defined type:class or structure,and the constructor of the type 
+    //      accepts more than one argument,in such case calling the push_back function requires that 
+    //      we pass an object of the type. Note this is only when the constructor accept more than one argument.
+    //      In constructor accepting only one argument when calling the push_back we can pass the argument 
+    //      of the type of the constructor instead of passing the object
+    //  1.2 emplace_back accept arguments of the constructor of the type, in calling the emplace_back we can simply 
+    //      pass the arguments of the type of the constructor instead of passing the object itself.
+    //  Difference 2:Efficiency
+    //  2.1 built-in type
+    //      If the type is a built-in type there is no difference in efficiency between push_back and emplace_back 
+    //      function.
+    //  2.2 User-defined type
+    //      For class or structure with constructor accepting one argument.Passing a data of the type accepted
+    //      by the constructor is more efficient than passing the object of the type.
+    //      If we try to append the object-instead of data accepted by the constructor of the class- directly to the
+    //      vector,then here a temporary object is created first. After the temporary object creation it is then copied 
+    //      into the vector.Here copying of temporary object into the vector storage produce an overhead which decreases 
+    //      the efficiency of the code.Note in the first process-passing raw data instead of object of the class- 
+    //      there is no copying of data from the temporary storage to the vector storage ,hence the overhead produced 
+    //      by this process is eliminated
+    vec.emplace_back(9);
+    
     // random access to the vector element
     cout << vec[2] << endl;     // 8, no range check by the [] operator
     cout << vec.at(2) << endl;  // 8, throw range_error exception when index is out of range
