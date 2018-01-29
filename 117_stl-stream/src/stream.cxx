@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <fstream>
+#include <sstream>
 
 using namespace std;
 
@@ -198,6 +199,11 @@ int main()
     ss << 89 << " Hex: " << hex << 89 << " Oct: " << oct << 89;   // write to ss
     cout << ss.str() << endl;   // 89 Hex: 59 Oct: 131
 
+    unsigned long myValue = 8;
+    ss << setw(4) << setfill('0') << myValue;
+    string sMyValue = ss.str();
+    cout << "sMyValue: " << sMyValue << endl;
+    
     int a, b, c;
     string s1;
     ss >> hex >> a; // read the first word and parse as a hexadecimal. Input works token by token separated by spaces, tabs and newlines

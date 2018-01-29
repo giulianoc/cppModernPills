@@ -100,7 +100,12 @@ int main()
     
     // Common APIs for all the containers
     vec.empty();
-    vec.size();
+    
+    cout << "size: " << vec.size() << endl;         // Returns the number of elements in the vector
+    cout << "capacity: " << vec.capacity() << endl;   // Returns the size of the storage space currently allocated for the vector, expressed in terms of elements
+    vec.reserve(20);   // Requests that the vector capacity be at least enough to contain n (20) elements
+    vec.shrink_to_fit();   // Requests the container to reduce its capacity to fit its size
+
     vector<int> vec2(vec);  // copy costructor
     vec.clear();
     vec2.swap(vec);         // vec2 becomes empty and vec has 3 items
