@@ -137,6 +137,7 @@ int main()
     s1.replace(itr, itr + 3, 3, 'y');   // replace 3 chars starting from itr with 3 'y', replace substring
 
     replace(s1.begin(), s1.end(), 'e', ' ');    // replace 'e' with ' ', it replace characters
+
     transform(s1.begin(), s1.end(), s2.begin(),
               [](char c){
                 if (c < 'n')
@@ -152,7 +153,12 @@ int main()
         // given a string, convert it to lowercase and count the length of the non-empty words of the string
         s1 = "Hello       World";
 
-        cout << "Lowercase: " << s1 << endl;
+        cout << "Lowercase on a different string. s1: " << s1 << ", s2: " << s2 << endl;
+        s2.resize(s1.size());
+        transform(s1.begin(), s1.end(), s2.begin(), [](unsigned char c){return tolower(c); } );
+        cout << "result. s1: " << s1 << ", s2: " << s2 << endl;
+
+        cout << "Lowercase on the same string: " << s1 << endl;
         transform(s1.begin(), s1.end(), s1.begin(), [](unsigned char c){return tolower(c); } );
         cout << "result: " << s1 << endl;
 
