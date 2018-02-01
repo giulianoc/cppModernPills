@@ -35,6 +35,7 @@ int main()
     //      2 hours: a number (2) and a unit (hours)
     //  duration<int,ratio<1,1>>    	// number of seconds (because of ratio<1,1>) stored in an int
     //  duration<double,ratio<60,1>>    // number of minutes stored in a double
+    //  duration<int,ratio<60*60,1>>    // number of hours stored in a int
     //	duration<int,ratio<60*60*24>>	// number of days stored in an int
     //  chrono provides several predefined duration (typedef): nanoseconds (9 zeros), microseconds (6 zeros), milliseconds, seconds, minutes, hours
     //  each clock has its predefined duration:
@@ -71,6 +72,10 @@ int main()
         cout << "no time elapsed" << endl;
     cout << "microseconds: " << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
     cout << "hours: " << chrono::duration_cast<chrono::hours>(d).count() << endl;
+    if (chrono::duration_cast<chrono::hours>(d) >= chrono::duration<int, ratio<60*60,1>> (1))
+        cout << "duration in hours is >= 1 hours" << endl;
+    else
+        cout << "duration in hours is not >= 1 hours" << endl;
 
     chrono::duration<int, ratio<60*60*24>> one_day(1);
     chrono::system_clock::time_point today = chrono::system_clock::now();
