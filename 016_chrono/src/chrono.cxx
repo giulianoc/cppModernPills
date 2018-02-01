@@ -69,16 +69,17 @@ int main()
     chrono::steady_clock::duration d = end - start;
     if (d == chrono::steady_clock::duration::zero())
         cout << "no time elapsed" << endl;
-    cout << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
+    cout << "microseconds: " << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
+    cout << "hours: " << chrono::duration_cast<chrono::hours>(d).count() << endl;
 
-	chrono::duration<int, ratio<60*60*24>> one_day(1);
-	chrono::system_clock::time_point today = chrono::system_clock::now();
-	chrono::system_clock::time_point tomorrow = today + one_day;
-	time_t tt;
-	tt = chrono::system_clock::to_time_t(today);
-	cout << "today: " << ctime(&tt) << endl;
-	tt = chrono::system_clock::to_time_t(tomorrow);
-	cout << "tomorrow: " << ctime(&tt) << endl;
+    chrono::duration<int, ratio<60*60*24>> one_day(1);
+    chrono::system_clock::time_point today = chrono::system_clock::now();
+    chrono::system_clock::time_point tomorrow = today + one_day;
+    time_t tt;
+    tt = chrono::system_clock::to_time_t(today);
+    cout << "today: " << ctime(&tt) << endl;
+    tt = chrono::system_clock::to_time_t(tomorrow);
+    cout << "tomorrow: " << ctime(&tt) << endl;
 
     return 0;
 }
