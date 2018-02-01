@@ -72,7 +72,7 @@ int main()
         cout << "no time elapsed" << endl;
     cout << "microseconds: " << chrono::duration_cast<chrono::microseconds>(d).count() << endl;
     cout << "hours: " << chrono::duration_cast<chrono::hours>(d).count() << endl;
-    if (chrono::duration_cast<chrono::hours>(d) >= chrono::duration<int, ratio<60*60,1>> (1))
+    if (chrono::duration_cast<chrono::hours>(d) >= chrono::hours (1))
         cout << "duration in hours is >= 1 hours" << endl;
     else
         cout << "duration in hours is not >= 1 hours" << endl;
