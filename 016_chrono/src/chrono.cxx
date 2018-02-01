@@ -75,11 +75,29 @@ int main()
     chrono::duration<int, ratio<60*60*24>> one_day(1);
     chrono::system_clock::time_point today = chrono::system_clock::now();
     chrono::system_clock::time_point tomorrow = today + one_day;
-    time_t tt;
-    tt = chrono::system_clock::to_time_t(today);
-    cout << "today: " << ctime(&tt) << endl;
-    tt = chrono::system_clock::to_time_t(tomorrow);
-    cout << "tomorrow: " << ctime(&tt) << endl;
+
+    time_t utcTime;
+    utcTime = chrono::system_clock::to_time_t(today);
+    cout << "today: " << ctime(&utcTime) << endl;
+    utcTime = chrono::system_clock::to_time_t(tomorrow);
+    cout << "tomorrow: " << ctime(&utcTime) << endl;
+    
+    {
+	tm          tmDateTime;
+        char        strDateTime [64];
+
+        localtime_r (&utcTime, &tmDateTime);
+
+	sprintf (strDateTime, "%04d-%02d-%02d %02d:%02d:%02d",
+		tmDateTime. tm_year + 1900,
+		tmDateTime. tm_mon + 1,
+		tmDateTime. tm_mday,
+		tmDateTime. tm_hour,
+		tmDateTime. tm_min,
+		tmDateTime. tm_sec);
+
+        cout << "tomorrow: " << strDateTime << endl;
+    }
 
     return 0;
 }
