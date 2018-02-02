@@ -103,6 +103,99 @@ int main()
 
         cout << "tomorrow: " << strDateTime << endl;
     }
+    
+    // to get monday of the current week
+    {
+	tm          tmDateTime;
+
+        today = chrono::system_clock::now();
+        utcTime = chrono::system_clock::to_time_t(today);
+
+        localtime_r (&utcTime, &tmDateTime);
+        // tmDateTime.tm_wday: 0-6, 0 is Sunday
+
+        int daysToHavePreviousMonday;
+
+        if (tmDateTime.tm_wday == 0)  // Sunday
+            daysToHavePreviousMonday = 6;
+        else
+            daysToHavePreviousMonday = tmDateTime.tm_wday - 1;
+
+        cout << "days to be subtracted: " << daysToHavePreviousMonday << endl;
+        chrono::system_clock::time_point mondayOfCurrentWeek;
+        if (daysToHavePreviousMonday != 0)
+        {
+            chrono::duration<int, ratio<60*60*24>> days(daysToHavePreviousMonday);
+            mondayOfCurrentWeek = today - days;
+        }
+        else
+            mondayOfCurrentWeek = today;
+
+        utcTime = chrono::system_clock::to_time_t(mondayOfCurrentWeek);
+        cout << "mondayOfCurrentWeek: " << ctime(&utcTime) << endl;
+    }
+
+    // to get sunday of the current week
+    {
+	tm          tmDateTime;
+
+        today = chrono::system_clock::now();
+        utcTime = chrono::system_clock::to_time_t(today);
+
+        localtime_r (&utcTime, &tmDateTime);
+        // tmDateTime.tm_wday: 0-6, 0 is Sunday
+
+        int daysToHaveNextSunday;
+
+        daysToHaveNextSunday = 7 - tmDateTime.tm_wday;
+
+        cout << "days to be added: " << daysToHaveNextSunday << endl;
+        chrono::system_clock::time_point sundayOfCurrentWeek;
+        if (daysToHaveNextSunday != 0)
+        {
+            chrono::duration<int, ratio<60*60*24>> days(daysToHaveNextSunday);
+            sundayOfCurrentWeek = today + days;
+        }
+        else
+            sundayOfCurrentWeek = today;
+
+        utcTime = chrono::system_clock::to_time_t(sundayOfCurrentWeek);
+        cout << "sundayOfCurrentWeek: " << ctime(&utcTime) << endl;
+    }
+
+    // to get the last day of the current month
+    {
+	tm          tmDateTime;
+
+        today = chrono::system_clock::now();
+        utcTime = chrono::system_clock::to_time_t(today);
+
+        localtime_r (&utcTime, &tmDateTime);
+
+        tmDateTime.tm_mday = 1;
+
+        // Next month 0=Jan
+        if (tmDateTime.tm_mon == 11)    // Dec
+        {
+            tmDateTime.tm_mon = 0;
+            tmDateTime.tm_year++;
+        }
+        else
+        {
+            tmDateTime.tm_mon++;
+        }
+        
+        // Get the first day of the next month
+        utcTime = mktime (&tmDateTime);
+
+        // Subtract 1 day
+        utcTime -= 86400;
+
+        // Convert back to date and time
+        localtime_r (&utcTime, &tmDateTime);
+
+        cout << "last day of the current month: " << ctime(&utcTime) << endl;
+    }
 
     return 0;
 }
