@@ -221,6 +221,15 @@ int main()
     cin >> d;
     cout << d;
 
+    // read a file (text) into a string
+    {        
+        std::ifstream medatataFile("myfilename.txt");
+        std::stringstream buffer;
+        buffer << medatataFile.rdbuf();
+        
+        string str = buffer.str();
+        cout << str << endl;
+    }
 
     return 0;
 }
