@@ -85,6 +85,7 @@ void consumer()
     {
         unique_lock<mutex> locker(mu);
         cond.wait(locker, [](){ return !q.empty(); });  // lambda function to manage spurious wake
+        // wait and wait_for without the lambda function return: cv_status::timeout or cv_status::notimeout
         data = q.back();
         q.pop_back();
         locker.unlock();
