@@ -117,7 +117,7 @@ int main(int argc, char** argv)
 {
     // t1 will be destroyed if it goes out of scope
     // so t1 has to be join or detach.
-    // To make sure t1 is join or detach, we can use RAII
+    // To make sure t1 is join (t.join()) or detach (t.detach()), we can use RAII
 
     {
         string s = "Beauty is only skin-deep";
