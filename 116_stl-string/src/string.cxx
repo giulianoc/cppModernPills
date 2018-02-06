@@ -87,7 +87,7 @@ int main()
     found = s1.find_first_of("doing", 10, 1);  // found: 17, 10: start, only the first chat ('d')
     found = s1.find_first_not_of("doing");  // found: 17, 10: start, only the first chat ('d')
 
-    found = s1.find_last_of("doing");  // found: 0
+    found = s1.find_last_of("doing");  // found: 0 (Searches the string for the last character that matches any of the characters specified in its arguments)
     found = s1.find_last_not_of("doing");  // found: 44
 
 
