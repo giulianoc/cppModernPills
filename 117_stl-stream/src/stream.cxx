@@ -149,6 +149,47 @@ int main()
     inf.unget();            // return a char back to a stream
     inf.get();              // read one char
     inf.gcount();           // return the number of chars being read by last unformatted read
+    // read the last part of a file
+    {
+        ifstream ifPathFileName("mylog.txt");
+        if (ifPathFileName) 
+        {
+            int lastCharsToBeRead = 20;
+            
+            int         charsToBeRead;
+            string lastPartOfFile = "";
+
+            // get length of file:
+            ifPathFileName.seekg (0, ifPathFileName.end);
+            int fileSize = ifPathFileName.tellg();
+            if (fileSize >= lastCharsToBeRead)
+            {
+                ifPathFileName.seekg (fileSize - lastCharsToBeRead, ifPathFileName.beg);
+                charsToBeRead = lastCharsToBeRead;
+            }
+            else
+            {
+                ifPathFileName.seekg (0, ifPathFileName.beg);
+                charsToBeRead = fileSize;
+            }
+
+            char* buffer = new char [charsToBeRead];
+            ifPathFileName.read (buffer, charsToBeRead);
+            if (ifPathFileName)
+            {
+                // all characters read successfully
+                lastPartOfFile.assign(buffer, charsToBeRead);                
+            }
+            else
+            {
+                // error: only is.gcount() could be read";
+                lastPartOfFile.assign(buffer, ifPathFileName.gcount());                
+            }
+            ifPathFileName.close();
+
+            delete[] buffer;
+        }
+    }
 
     // output
     ofstream of("mylog.txt");
