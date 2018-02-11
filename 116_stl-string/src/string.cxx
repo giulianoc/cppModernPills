@@ -162,7 +162,7 @@ int main()
         transform(s1.begin(), s1.end(), s1.begin(), [](unsigned char c){return tolower(c); } );
         cout << "result: " << s1 << endl;
 
-        cout << "Splitting in words (option 1): " << s1;
+        cout << "Splitting in words (option 1): " << s1;    // drawback. it can’t split on anything else than spaces, which can be an issue, like for parsing a CSV
         istringstream iss(s1);
         vector<string> words;
         copy(
