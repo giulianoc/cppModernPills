@@ -93,6 +93,16 @@ int main()
 
     s1.compare(s2);     // positive if s1 > s2; negative if s1 < s2; zero is s1 == s2
     s1.compare(3, 2, s2);   // 3: start, 2: size
+    
+    // compare case insensitive
+    {
+        string a ("abcd");
+        string b ("abcde");
+        bool isEqual = a.length() != b.length() ? false : 
+            equal(a.begin(), a.end(), b.begin(), [](int c1, int c2){ return toupper(c1) == toupper(c2); });
+        
+        cout << "isEqual: " << isEqual << endl;
+    }
 
     string ss = s1 + s2;
 
