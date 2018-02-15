@@ -93,6 +93,8 @@ int main()
 
     s1.compare(s2);     // positive if s1 > s2; negative if s1 < s2; zero is s1 == s2
     s1.compare(3, 2, s2);   // 3: start, 2: size
+    string prefix ("if a job");
+    s1.compare(0, prefix.size(), prefix);   // it means if s1 start with prefix (if yes, return will be 0) 
     
     // compare case insensitive
     {

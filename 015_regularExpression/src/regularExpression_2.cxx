@@ -14,6 +14,7 @@ int main()
     string str;
     // while (true)
     {
+        cout << "Write Email address to parse: ";
         cin >> str;
 
         // Next I want to extract a portion of the email address, for example the username and domain
@@ -31,6 +32,39 @@ int main()
             // m.prefix(): everything is in front of the matched string (<email> in the previous example)
             // m.suffix(): everything is after the matched string (<end> in the previous example)
 
+            cout << "m.size() " << m.size() << endl;
+            for (int n = 0; n < m.size(); n++)
+            {
+                cout << "m[" << n << "]: str()=" << m[n].str() << endl; // m.str(n) and *(m.begin()+n) provides same result
+            }
+            cout << "m.prefix().str(): " << m.prefix().str() << endl;
+            cout << "m.suffix().str(): " << m.suffix().str() << endl;
+        }
+
+        cout << "Write URL to parse: ";
+        cin >> str;
+
+        // URL parse
+        {
+            smatch m;   // typedef std:match_result<string>
+
+            // regex e("(http|https|ftp)://([^/ :]+):?([^/ ]*)(/?[^ #?]*)\\x3f?([^ #]*)#?([^ ]*)");
+            regex e (R"(^(([^:\/?#]+):)?(//([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?)", std::regex::extended);
+
+            bool match = regex_search(str, m, e);   // return true if it matches
+
+//            Checking: http://localhost.com/path?hue=br#cool
+//            0: http://localhost.com/path?hue=br#cool
+//            1: http:
+//            2: http
+//            3: //localhost.com
+//            4: localhost.com
+//            5: /path
+//            6: ?hue=br
+//            7: hue=br
+//            8: #cool
+//            9: cool
+            
             cout << "m.size() " << m.size() << endl;
             for (int n = 0; n < m.size(); n++)
             {
