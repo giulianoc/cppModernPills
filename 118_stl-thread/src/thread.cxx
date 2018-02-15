@@ -211,6 +211,27 @@ int main(int argc, char** argv)
 
         thread t4([](string s) { cout << s << endl; }, s); 
         t4.join();
+
+        /*
+         to call a method of a class as thread:
+        class DummyClass {
+        public:
+            DummyClass()
+            {}
+            DummyClass(const DummyClass & obj)
+            {}
+            void sampleMemberFunction(int x)
+            {
+                std::cout<<"Inside sampleMemberFunction "<<x<<std::endl;
+            }
+        };
+         * 
+        DummyClass dummyObj;
+        int x = 10;
+        std::thread threadObj(&DummyClass::sampleMemberFunction,&dummyObj, x);
+        threadObj.join();
+         */
+
         
         // other funtions creating threads: async(), call_once()
         // once_flag _flag;
