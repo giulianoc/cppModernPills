@@ -148,8 +148,21 @@ int main()
     s1.insert(itr, 3, 's');
     s1.replace(itr, itr + 3, 3, 'y');   // replace 3 chars starting from itr with 3 'y', replace substring
 
+    // replace the first substring with another substring
+    {
+        string strbase = "abc def ghi lmn";
+        string strToBeReplaced = "defg";
+        string strToReplace = "123456";
+        if (strbase.find(strToBeReplaced) != string::npos)
+            strbase.replace(strbase.find(strToBeReplaced),strToBeReplaced.length(),strToReplace);
+        
+        cout << "new strbase: " << strbase << endl;
+    }
+
     replace(s1.begin(), s1.end(), 'e', ' ');    // replace 'e' with ' ', it replace characters
 
+    cout << "s1: " << s1 << endl;
+    cout << "s2: " << s2 << endl;
     transform(s1.begin(), s1.end(), s2.begin(),
               [](char c){
                 if (c < 'n')
@@ -157,6 +170,8 @@ int main()
                 else
                     return 'z';
             });
+    cout << "s1: " << s1 << endl;
+    cout << "s2: " << s2 << endl;
 
     s1 = "abcdefg";
     rotate(s1.begin(), s1.begin() + 3, s1.end());   // "defgabc" s1.begin() + 3 becomes the first char
