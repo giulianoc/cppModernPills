@@ -159,7 +159,7 @@ int main()
             int         charsToBeRead;
             string lastPartOfFile = "";
 
-            // get length of file:
+            // get size/length of file:
             ifPathFileName.seekg (0, ifPathFileName.end);
             int fileSize = ifPathFileName.tellg();
             if (fileSize >= lastCharsToBeRead)
