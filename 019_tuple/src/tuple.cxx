@@ -51,6 +51,11 @@ int main ()
     string y;
     char z;
     tie(x, y, z) = t2;          // result will be x: 12, y: "Curiosity kills the cat", z: 'd'
+    cout << "X before: " << x << endl;
+    x++;
+    tie(x, y, z) = t2;
+    cout << "X after: " << x << endl;
+    
     tie(x, ignore, z) = t2;
 
     auto t4 = tuple_cat(t2, t3);        // t4 is a tuple<int, string, char, string>
