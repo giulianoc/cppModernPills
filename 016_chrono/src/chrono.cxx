@@ -104,6 +104,39 @@ int main()
         cout << "tomorrow: " << strDateTime << endl;
     }
     
+    // comparing a date time string
+    {
+        string      strdateTime_1 ("2018-03-26 13:28:00");
+        
+        char        dateTime_2 [64];
+        {
+            int numberOfHours = 1;
+            
+            chrono::system_clock::time_point now = chrono::system_clock::now();
+            chrono::system_clock::time_point retentionDateTime = now - chrono::hours(numberOfHours);
+
+            time_t retentionUtcTime;
+            retentionUtcTime = chrono::system_clock::to_time_t(retentionDateTime);
+
+            tm          retentionTmDateTime;
+
+            localtime_r (&retentionUtcTime, &retentionTmDateTime);
+
+            sprintf (dateTime_2, "%04d-%02d-%02d %02d:%02d:%02d",
+                    retentionTmDateTime. tm_year + 1900,
+                    retentionTmDateTime. tm_mon + 1,
+                    retentionTmDateTime. tm_mday,
+                    retentionTmDateTime. tm_hour,
+                    retentionTmDateTime. tm_min,
+                    retentionTmDateTime. tm_sec);
+        }
+
+        if (strdateTime_1 < string(dateTime_2))
+            cout << strdateTime_1 << " < " << string(dateTime_2) << endl;
+        else
+            cout << strdateTime_1 << " >= " << string(dateTime_2) << endl;
+    }
+    
     // to get monday of the current week
     {
 	tm          tmDateTime;

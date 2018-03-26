@@ -64,7 +64,7 @@ int main()
     s1.replace(2, 5, s2, 3, 3); // abgon def   2: start, 5: size, 3: start, 3: size
 
     s1.erase(1, 4);             // a def
-    s2.substr(2, 4);            // agon
+    s2.substr(2, 4);            // return: agon, s2 remain as is
 
     s1 = "abc";
     s1.c_str();                 // "abc\0"
