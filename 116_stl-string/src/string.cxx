@@ -4,6 +4,7 @@
 #include <iterator>
 #include <vector>
 #include <algorithm>
+#include <regex>
 
 using namespace std;
 
@@ -62,6 +63,15 @@ int main()
     s1.append(" def");      // abc def
     s1.insert(2, "montain", 4); // abmontc def
     s1.replace(2, 5, s2, 3, 3); // abgon def   2: start, 5: size, 3: start, 3: size
+    
+    // replace a substring in a string with another substring
+    cout << "Replace." << endl;
+    string test = "{	\"Type\": \"Process\",	\"Label\": \"1\",	\"Variables\": {  		\"Title\": \"My Title of the content\"	},	\"Task\": {		\"Label\": \"nome univoco del task all'interno del processo\",		\"Type\": \"ContentIngestion\",		\"Parameters\": {		\"SourceURL\": \"http://techslides.com/demos/sample-videos/small.mp4\",			\"SourceFileName\": \"123456.mp4\",			\"ContentType\": \"video\",			\"userData\": { \"MyData\": \"this is my data\" },			\"Title\": \"_Title_\"		}	}}";
+    cout << "Test before replace: " << test << endl;
+    string variableToBeSearched = string("\\$\\{") + "Title" + "\\}";
+    string value = "k l m g h r s y u o a w e r";
+    test = regex_replace(test, regex(variableToBeSearched), value);
+    cout << "Test after replace: " << test << endl;
 
     s1.erase(1, 4);             // a def
     s2.substr(2, 4);            // return: agon, s2 remain as is
@@ -93,8 +103,14 @@ int main()
 
     s1.compare(s2);     // positive if s1 > s2; negative if s1 < s2; zero is s1 == s2
     s1.compare(3, 2, s2);   // 3: start, 2: size
+    
+    // next is end with
+    string suffix(".mp4");
+    if (s1.size() >= suffix.size() && 0 == s1.compare(s1.size()-suffix.size(), suffix.size(), suffix)) ;
+ 
+    // next is start with
     string prefix ("if a job");
-    s1.compare(0, prefix.size(), prefix);   // it means if s1 start with prefix (if yes, return will be 0) 
+    if (s1.size() >= prefix.size() && 0 == s1.compare(0, prefix.size(), prefix)) ;
     
     // compare case insensitive
     {

@@ -51,8 +51,8 @@ int main ()
     string y;
     char z;
     tie(x, y, z) = t2;          // result will be x: 12, y: "Curiosity kills the cat", z: 'd'
-    cout << "X before: " << x << endl;
     x++;
+    cout << "X before: " << x << endl;
     tie(x, y, z) = t2;
     cout << "X after: " << x << endl;
     
