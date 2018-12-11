@@ -88,7 +88,7 @@ int main()
     len = s1.copy(buf, 4, 2);       // buf: "cdef", len = 4
 
     s1 = "if a job was worth doing, it's worth doing well";
-    size_t found = s1.find("doing");    // found: 17,        string::npos in case it is not found
+    size_t found = s1.find("doing");    // look for the entire string "doing", found: 17,        string::npos in case it is not found
     found = s1.find("doing", 20);       // found: 35, 20: start
     found = s1.find("doing well", 0);   // found: 35
     found = s1.find("doing well", 0, 5);   // found: 17, 0: start, 5: looking 5 chars ("doing")
