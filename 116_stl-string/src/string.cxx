@@ -120,6 +120,9 @@ int main()
             equal(a.begin(), a.end(), b.begin(), [](int c1, int c2){ return toupper(c1) == toupper(c2); });
         
         cout << "isEqual: " << isEqual << endl;
+        
+        // a simpler API would be: 
+        //  int strcasecmp(const char *string1, const char *string2);Copy
     }
 
     string ss = s1 + s2;
