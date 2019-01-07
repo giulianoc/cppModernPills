@@ -65,13 +65,16 @@ int main()
     s1.replace(2, 5, s2, 3, 3); // abgon def   2: start, 5: size, 3: start, 3: size
     
     // replace a substring in a string with another substring
+    cout << endl;
     cout << "Replace." << endl;
     string test = "{	\"Type\": \"Process\",	\"Label\": \"1\",	\"Variables\": {  		\"Title\": \"My Title of the content\"	},	\"Task\": {		\"Label\": \"nome univoco del task all'interno del processo\",		\"Type\": \"ContentIngestion\",		\"Parameters\": {		\"SourceURL\": \"http://techslides.com/demos/sample-videos/small.mp4\",			\"SourceFileName\": \"123456.mp4\",			\"ContentType\": \"video\",			\"userData\": { \"MyData\": \"this is my data\" },			\"Title\": \"_Title_\"		}	}}";
     cout << "Test before replace: " << test << endl;
-    string variableToBeSearched = string("\\$\\{") + "Title" + "\\}";
+    string variableToBeSearched = string("Type");
     string value = "k l m g h r s y u o a w e r";
-    test = regex_replace(test, regex(variableToBeSearched), value);
+	cout << "replace " << variableToBeSearched << " with " << value << endl;
+    string test2 = regex_replace(test, regex(variableToBeSearched), value);
     cout << "Test after replace: " << test << endl;
+    cout << "Test2 after replace: " << test2 << endl;
 
     s1.erase(1, 4);             // a def
     s2.substr(2, 4);            // return: agon, s2 remain as is
@@ -167,17 +170,19 @@ int main()
     s1.insert(itr, 3, 's');
     s1.replace(itr, itr + 3, 3, 'y');   // replace 3 chars starting from itr with 3 'y', replace substring
 
-    // replace the first substring with another substring
+    // replace the first substring with another substring. The initial buffer is modified
     {
+		cout << endl;
         string strbase = "abc def ghi lmn";
-        string strToBeReplaced = "defg";
+        cout << "current strbase: " << strbase << endl;
+        string strToBeReplaced = "def";
         string strToReplace = "123456";
+        cout << "replace " << strToBeReplaced << " with " << strToReplace << endl;
         if (strbase.find(strToBeReplaced) != string::npos)
             strbase.replace(strbase.find(strToBeReplaced),strToBeReplaced.length(),strToReplace);
         
         cout << "new strbase: " << strbase << endl;
     }
-
     replace(s1.begin(), s1.end(), 'e', ' ');    // replace 'e' with ' ', it replace characters
 
     cout << "s1: " << s1 << endl;
