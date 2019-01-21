@@ -101,6 +101,13 @@ int main()
         inf.exceptions(ios::goodbit);     // no exception would be generated
     }
 
+	// to read a text file line by line
+    {
+        ifstream inf("mylog.txt");
+        string line;
+		while(getline(inf, line))
+			cout << line;
+    }
 
     // formatting
     cout << 34 << endl;             // 34
