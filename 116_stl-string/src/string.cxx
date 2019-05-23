@@ -8,6 +8,35 @@
 
 using namespace std;
 
+string& ltrim(string& s)
+{
+	auto it = find_if(s.begin(), s.end(),
+		[](char c)
+		{
+			return !isspace<char>(c, locale::classic());
+		});
+	s.erase(s.begin(), it);
+
+	return s;
+}
+
+string& rtrim(string& s)
+{
+	auto it = find_if(s.rbegin(), s.rend(),
+		[](char c)
+		{
+			return !isspace<char>(c, locale::classic());
+		});
+	s.erase(it.base(), s.end());
+
+	return s;
+}
+
+string& trim(string& s)
+{
+	return ltrim(rtrim(s));
+}
+
 int main()
 {
     // Constructors
@@ -199,6 +228,17 @@ int main()
 
     s1 = "abcdefg";
     rotate(s1.begin(), s1.begin() + 3, s1.end());   // "defgabc" s1.begin() + 3 becomes the first char
+
+	// trim
+	{
+		cout << "trim demo:" << endl;
+		string s("  123   ");
+		cout << "s: " << s << ", ltrim(s): '" << ltrim(s) << "'" << endl;
+		s = "  123   ";
+		cout << "s: " << s << ", rtrim(s): '" << rtrim(s) << "'" << endl;
+		s = "  123   ";
+		cout << "s: " << s << ", trim(s): '" << trim(s) << "'" << endl;
+	}
 
     {
         // given a string, convert it to lowercase and count the length of the non-empty words of the string
