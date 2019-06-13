@@ -238,6 +238,10 @@ int main()
 		cout << "s: " << s << ", rtrim(s): '" << rtrim(s) << "'" << endl;
 		s = "  123   ";
 		cout << "s: " << s << ", trim(s): '" << trim(s) << "'" << endl;
+
+		s = "  123   ";
+		trim(s);
+		cout << "s: '" << s << "'" << endl;
 	}
 
     {
