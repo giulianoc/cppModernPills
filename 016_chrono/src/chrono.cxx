@@ -104,6 +104,18 @@ int main()
         cout << "tomorrow: " << strDateTime << endl;
     }
     
+    // comparing time_point
+	{
+		chrono::milliseconds ms(10);
+		chrono::system_clock::time_point now = chrono::system_clock::now();
+		chrono::system_clock::time_point nowPlus = now - ms;
+
+		if (now < nowPlus)
+			cout << "now is < nowPlus" << endl;
+		else
+			cout << "now is not < nowPlus" << endl;
+	}
+
     // comparing a date time string
     {
         string      strdateTime_1 ("2018-03-26 13:28:00");
