@@ -279,5 +279,20 @@ int main()
         cout << str << endl;
     }
 
+	// read a file line by line
+	{
+        std::ifstream medatataFile;
+
+		medatataFile.open("tpoint.txt", ios::in);
+		if (medatataFile.is_open())
+		{
+			string tp;
+			while(getline(medatataFile, tp)){
+				cout << tp << "\n";
+			}
+			medatataFile.close();
+		}
+	}
+
     return 0;
 }
