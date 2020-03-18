@@ -132,6 +132,16 @@ int main()
     found = s1.find_last_of("doing");  // found: 0 (Searches the string for the last character that matches any of the characters specified in its arguments)
     found = s1.find_last_not_of("doing");  // found: 44
 
+	// find the last occurence of a substring in a string
+	{
+		string str("one two three, one two three");
+		cout << "Searching for the last occurrence of 'two three'\n";
+		size_t i = str.rfind("two three");
+		if(i == string::npos)
+			cout << "No match found.\n";
+		else
+			cout << "Match found at index " << i << endl;	// it will print 19
+	}
 
     s1.compare(s2);     // positive if s1 > s2; negative if s1 < s2; zero is s1 == s2
     s1.compare(3, 2, s2);   // 3: start, 2: size
