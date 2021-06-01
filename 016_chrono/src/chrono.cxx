@@ -83,6 +83,7 @@ int main()
 
     time_t utcTime;
     utcTime = chrono::system_clock::to_time_t(today);
+	// to get chrono from time_t: chrono::system_clock::time_point t = chrono::system_clock::from_time_t(utcTime)
     cout << "today: " << ctime(&utcTime) << endl;
     utcTime = chrono::system_clock::to_time_t(tomorrow);
     cout << "tomorrow: " << ctime(&utcTime) << endl;
