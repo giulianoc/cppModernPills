@@ -88,19 +88,40 @@ int main()
     utcTime = chrono::system_clock::to_time_t(tomorrow);
     cout << "tomorrow: " << ctime(&utcTime) << endl;
     
+	// now local time as string
     {
-	tm          tmDateTime;
+		tm          tmDateTime;
         char        strDateTime [64];
 
         localtime_r (&utcTime, &tmDateTime);
 
-	sprintf (strDateTime, "%04d-%02d-%02d %02d:%02d:%02d",
-		tmDateTime. tm_year + 1900,
-		tmDateTime. tm_mon + 1,
-		tmDateTime. tm_mday,
-		tmDateTime. tm_hour,
-		tmDateTime. tm_min,
-		tmDateTime. tm_sec);
+		sprintf (strDateTime, "%04d-%02d-%02d %02d:%02d:%02d",
+			tmDateTime. tm_year + 1900,
+			tmDateTime. tm_mon + 1,
+			tmDateTime. tm_mday,
+			tmDateTime. tm_hour,
+			tmDateTime. tm_min,
+			tmDateTime. tm_sec);
+
+        cout << "tomorrow: " << strDateTime << endl;
+    }
+
+	// now utc as string
+    {
+		tm          tmDateTime;
+        char        strDateTime [64];
+
+		chrono::system_clock::time_point now = chrono::system_clock::now();
+		time_t utcNow  = chrono::system_clock::to_time_t(now);
+
+		gmtime_r (&utcNow, &tmDateTime);
+		sprintf (strDateTime, "%04d-%02d-%02dT%02d:%02d:%02dZ",
+			tmDateTime. tm_year + 1900,
+			tmDateTime. tm_mon + 1,
+			tmDateTime. tm_mday,
+			tmDateTime. tm_hour,
+			tmDateTime. tm_min,
+			tmDateTime. tm_sec);
 
         cout << "tomorrow: " << strDateTime << endl;
     }
