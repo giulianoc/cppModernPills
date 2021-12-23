@@ -84,15 +84,18 @@ int main()
         // Using the grep regular expression, + does not mean one or more preceding character but just the '+' character
 		// regex e("abc.+", regex_constants::grep);
 
+		// to match a string like this
+		// str = "2021-12-22 23:18:54 SSC Bari restarted because of 'segment";
+		// regex e("^[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}[[:space:]][[:digit:]]{2}:[[:digit:]]{2}:[[:digit:]]{2}.*");
 
 
 		// check if the entire str string matches
 		bool match = regex_match(str, e);
 
-            // check if a substring of str matches
-            // bool match = regex_search(str, e);
+		// check if a substring of str matches
+		// bool match = regex_search(str, e);
 
-            cout << (match ? "Matched" : "Not matched") << endl << endl;
+		cout << (match ? "Matched" : "Not matched") << endl << endl;
 	}
 
 }
