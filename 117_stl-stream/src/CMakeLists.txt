@@ -25,6 +25,10 @@ SET (SOURCES
 	stream.cxx
 )
 
+SET (SOURCES_READTEXTFILE
+	readTextFile.cxx
+)
+
 #SET (HEADERS
 #)
 
@@ -33,5 +37,6 @@ SET (SOURCES
 #add_compile_options(-D_REENTRANT)
 
 add_executable(stream ${SOURCES} ${HEADERS})
+add_executable(readTextFile ${SOURCES_READTEXTFILE} ${HEADERS})
 
 #target_link_libraries (checkErrors ErrMsg)
