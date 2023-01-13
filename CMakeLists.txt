@@ -28,7 +28,7 @@ project(
 	C++ModernPills
 )
 
-SET(CMAKE_CXX_FLAGS "-std=c++14")
+SET(CMAKE_CXX_FLAGS "-std=c++17")
 
 set(CMAKE_BUILD_TYPE Debug)
 #set(CMAKE_BUILD_TYPE RelWithDebInfo)
@@ -75,6 +75,7 @@ add_subdirectory(115_stl-functors/src)
 add_subdirectory(116_stl-string/src)
 add_subdirectory(117_stl-stream/src)
 add_subdirectory(118_stl-thread/src)
+add_subdirectory(119_filesystem/src)
 
 add_subdirectory(200_mostFrequent/src)
 add_subdirectory(201_constructorOrder/src)
