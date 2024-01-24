@@ -1,4 +1,5 @@
 #include <iostream>
+#include <tuple>
 #include <set>
 
 using namespace std;
@@ -67,5 +68,30 @@ int main()
         cout << endl;
     }
     
+	// test confronto tra tuple
+	{
+		set<tuple<int, string, int>> tupleset;
+		tupleset.insert(make_tuple(1, "2", 3)); 
+		tupleset.insert(make_tuple(4, "5", 6)); 
+
+		set<tuple<int, string, int>>::iterator it = tupleset.find(make_tuple(4, "5", 6));
+		if (it == tupleset.end())
+			cout << "tuple 4, \"5\", 6 not found" << endl;
+		else
+			cout << "tuple 4, \"5\", 6 found" << endl;	// output qui
+
+		it = tupleset.find(make_tuple(4, "7", 6));
+		if (it == tupleset.end())
+			cout << "tuple 4, \"7\", 6 not found" << endl;	// output qui
+		else
+			cout << "tuple 4, \"7\", 6 found" << endl;
+
+		it = tupleset.find(make_tuple(4, "5", 7));
+		if (it == tupleset.end())
+			cout << "tuple 4, \"5\", 7 not found" << endl;	// output qui
+		else
+			cout << "tuple 4, \"5\", 7 found" << endl;
+	}
+
     return 0;
 }
