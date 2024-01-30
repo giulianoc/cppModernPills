@@ -169,7 +169,8 @@ int main()
         {
             smatch m;   // typedef std:match_result<string>
 
-			regex alternateRegex("/([A-Za-z0-9\-\_]+)/([A-Za-z0-9\-\_]+)/([A-Za-z0-9\-\_]+)");
+			// regex alternateRegex("/([A-Za-z0-9\\-\\_]+)/([A-Za-z0-9\\-\\_]+)/([A-Za-z0-9\\-\\_]+)");
+			regex alternateRegex("//(.*[^/])/(.*[^/])/(.*[^/])/(.*[^/])");
 
             bool match = regex_search(str, m, alternateRegex);
 

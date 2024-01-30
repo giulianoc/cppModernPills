@@ -38,7 +38,7 @@ int main()
 		// []		any character inside the square brackets
 		// regex e("ab[cd]*");
 
-		// []		any character NOT inside the square brackets
+		// []		any character NOT inside the square brackets (any chars except 'c' or 'd')
 		// regex e("ab[^cd]*");
 
 		// {3}		exactly 3 appearence of the preceding character
