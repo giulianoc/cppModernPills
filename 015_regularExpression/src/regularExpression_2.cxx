@@ -11,9 +11,10 @@ int main()
     // Regular expression: specific pattern that provides concise and flexible means
     //	to "match" strings of text
 
-    string str;
-    // while (true)
+    if(false)
     {
+		string str;
+
         cout << "Write Email address to parse: ";
         cin >> str;
 
@@ -40,6 +41,11 @@ int main()
             cout << "m.prefix().str(): " << m.prefix().str() << endl;
             cout << "m.suffix().str(): " << m.suffix().str() << endl;
         }
+    }
+    
+    if(false)
+    {
+		string str;
 
         cout << "Write URL to parse: ";
         cin >> str;
@@ -74,8 +80,9 @@ int main()
             cout << "m.suffix().str(): " << m.suffix().str() << endl;
         }
     }
-    
+
     // get duration in millisecs (Duration: 00:17:41.32) from the ffmpeg -i output
+    if(false)
     {
         string ffmpegOutput =
 "ffmpeg version 3.4.1 Copyright (c) 2000-2017 the FFmpeg developers\n"
@@ -153,4 +160,32 @@ int main()
         }
     }
 
+    if(true)
+    {
+		string str = "https://rsi.cue.rsi.ch/sport/sci-alpino/2055053-5ixsyt-lara-gut-behrami";
+
+        // Next I want to extract a portion of the email address, for example the username and domain
+        // First I have to define the groups (submatch) to define username e domain name
+        {
+            smatch m;   // typedef std:match_result<string>
+
+			regex alternateRegex("/([A-Za-z0-9\-\_]+)/([A-Za-z0-9\-\_]+)/([A-Za-z0-9\-\_]+)");
+
+            bool match = regex_search(str, m, alternateRegex);
+
+            // m is where the result is saved
+            // we will have three results: the entire match, the first submatch, the second submatch
+            // giving the following input: <email>user@gmail.com<end>
+            // m.prefix(): everything is in front of the matched string (<email> in the previous example)
+            // m.suffix(): everything is after the matched string (<end> in the previous example)
+
+            cout << "m.size() " << m.size() << endl;
+            for (int n = 0; n < m.size(); n++)
+            {
+                cout << "m[" << n << "]: str()=" << m[n].str() << endl; // m.str(n) and *(m.begin()+n) provides same result
+            }
+            cout << "m.prefix().str(): " << m.prefix().str() << endl;
+            cout << "m.suffix().str(): " << m.suffix().str() << endl;
+        }
+    }
 }
