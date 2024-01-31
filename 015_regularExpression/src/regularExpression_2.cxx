@@ -162,7 +162,8 @@ int main()
 
     if(true)
     {
-		string str = "https://rsi.cue.rsi.ch/sport/sci-alpino/2055053-5ixsyt-lara-gut-behrami";
+		// string str = "https://rsi.cue.rsi.ch/sport/sci-alpino/2055053-5ixsyt-lara-gut-behrami";
+		string str = "https://rsi.cue.rsi.ch/food/634116-9nz100-Giuria-at-work-2022";
 
         // Next I want to extract a portion of the email address, for example the username and domain
         // First I have to define the groups (submatch) to define username e domain name
@@ -170,7 +171,8 @@ int main()
             smatch m;   // typedef std:match_result<string>
 
 			// regex alternateRegex("/([A-Za-z0-9\\-\\_]+)/([A-Za-z0-9\\-\\_]+)/([A-Za-z0-9\\-\\_]+)");
-			regex alternateRegex("//(.*[^/])/(.*[^/])/(.*[^/])/(.*[^/])");
+			// regex alternateRegex("//(.*[^/])/(.*[^/])/(.*[^/])/(.*[^/])");
+			regex alternateRegex("[a-z]+://[^/]+/(.+)/(.+)");
 
             bool match = regex_search(str, m, alternateRegex);
 
