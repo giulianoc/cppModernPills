@@ -26,6 +26,9 @@ int main()
 
     it = mymap.find('z');
 
+	// per rimuovere un elemento della mappa
+	mymap.erase(it);
+
     // key of the elements cannot be modified, it is a constant iterator
     // (*it).first = 'd';       compiler generates an error
 
