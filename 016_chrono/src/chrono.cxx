@@ -108,7 +108,7 @@ int main() {
   utcTime = chrono::system_clock::to_time_t(tomorrow);
   cout << "tomorrow: " << ctime(&utcTime) << endl;
 
-  // now local time as string
+  // now local time as string (chrono to string)
   {
     tm tmDateTime;
     char strDateTime[64];
@@ -123,7 +123,7 @@ int main() {
     cout << "tomorrow: " << strDateTime << endl;
   }
 
-  // now utc as string
+  // now utc as string (chrono to string)
   {
     tm tmDateTime;
     char strDateTime[64];
@@ -271,7 +271,7 @@ int main() {
     cout << "last day of the current month: " << ctime(&utcTime) << endl;
   }
 
-  // string to chrono
+  // string to chrono (for 'chrono to string' see above)
   {
     tm tm = {};
     stringstream ss("Jan 9 2014 12:35:34");
